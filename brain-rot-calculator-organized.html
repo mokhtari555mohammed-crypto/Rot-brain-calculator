@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BRAIN ROT CALCULATOR 🧠 اختبر مدى تعفن دماغك</title>
+<meta name="description" content="اختبار ترفيهي ساخر من 20 سؤالاً يقيس مستوى Brain Rot لديك. شارك نتيجتك وتحدَّ أصدقاءك!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BRAIN ROT CALCULATOR 🧠 كم نسبة تعفن دماغك؟">
+<meta property="og:description" content="20 سؤالاً، نتيجة ساخرة، وتحدٍّ لأصدقائك. للترفيه فقط!">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#08040f">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;600;800&display=swap">
+<style>
+  /* === 1. المتغيرات والإعدادات الأساسية (Variables & Base) === */
+  :root {
+    --bg: #08040f;
+    --panel: #150a26;
+    --line: #3a1d66;
+    --purple: #9d4dff;
+    --neon: #39ff6a;
+    --pink: #ff3df0;
+    --text: #f1e9ff;
+    --dim: #a898c8;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top,0px);
+    padding-bottom: env(safe-area-inset-bottom,0px);
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+  html {
+    scroll-padding-top: env(safe-area-inset-top,0px);
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    background: radial-gradient(circle at 50% -10%,#2a0d55 0,var(--bg) 55%) fixed,var(--bg);
+    color: var(--text);
+    font-family: Rubik,"Segoe UI",Tahoma,sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top,0px);
+    background: var(--bg);
+    z-index: 10;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  button:focus-visible {
+    outline: 3px solid var(--neon);
+    outline-offset: 2px;
+  }
+
+  /* === 2. التخطيط العام والتنقل (Layout & Navigation) === */
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 18px 16px 60px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    font-family: Bungee,Impact,sans-serif;
+    font-size: 14px;
+    color: var(--neon);
+    letter-spacing: .5px;
+    direction: ltr;
+  }
+
+  .nb {
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--dim);
+  }
+
+  .nb:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+  }
+
+  /* === 3. الصفحة الرئيسية (Home / Hero) === */
+
+  .hero {
+    text-align: center;
+    padding: 10px 0 0;
+  }
+
+  .brain {
+    font-size: 110px;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .brain::before, .brain::after {
+    content: attr(data-t);
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: screen;
+    opacity: .8;
+  }
+
+  .brain::before {
+    color: #0ff;
+    animation: gl1 2.4s infinite steps(1);
+  }
+
+  .brain::after {
+    color: #f0f;
+    animation: gl2 2.4s infinite steps(1);
+  }
+
+  @keyframes float {
+    50% {
+      transform: translateY(-8px) rotate(-3deg);
+    }
+  }
+
+  @keyframes gl1 {
+    0%, 86%, 100% {
+      transform: none;
+      clip-path: inset(0);
+    }
+    88% {
+      transform: translate(-6px,2px);
+      clip-path: inset(10% 0 55% 0);
+    }
+    94% {
+      transform: translate(5px,-2px);
+      clip-path: inset(60% 0 5% 0);
+    }
+  }
+
+  @keyframes gl2 {
+    0%, 80%, 100% {
+      transform: none;
+      clip-path: inset(0);
+    }
+    82% {
+      transform: translate(6px,-3px);
+      clip-path: inset(40% 0 30% 0);
+    }
+    92% {
+      transform: translate(-5px,3px);
+      clip-path: inset(5% 0 70% 0);
+    }
+  }
+
+  h1 {
+    font-family: Bungee,Impact,sans-serif;
+    font-weight: 400;
+    font-size: clamp(30px,9vw,52px);
+    line-height: 1.1;
+    margin: 14px 0 6px;
+    direction: ltr;
+    text-shadow: 0 0 18px rgba(157,77,255,.8),3px 0 var(--pink),-3px 0 #0ff;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--neon);
+    text-shadow: 0 0 18px var(--neon);
+  }
+
+  .sub {
+    color: var(--dim);
+    font-size: 17px;
+    max-width: 480px;
+    margin: 10px auto 22px;
+  }
+
+  .cta {
+    background: var(--neon);
+    color: #04200c;
+    border: 0;
+    border-radius: 14px;
+    padding: 15px 28px;
+    font-family: Bungee,Impact,sans-serif;
+    font-size: 19px;
+    box-shadow: 0 0 28px rgba(57,255,106,.5);
+    transition: transform .15s;
+    direction: ltr;
+  }
+
+  .cta:hover {
+    transform: scale(1.04) rotate(-1deg);
+  }
+
+  .sec {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid var(--purple);
+    border-radius: 14px;
+    padding: 11px 18px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .sec:hover {
+    background: var(--purple);
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 12px 0;
+  }
+
+  .count {
+    color: var(--dim);
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  .banner {
+    background: var(--panel);
+    border: 1px dashed var(--neon);
+    border-radius: 14px;
+    padding: 10px 14px;
+    margin: 0 auto 16px;
+    color: var(--neon);
+  }
+
+  .disc {
+    font-size: 12px;
+    color: var(--dim);
+    text-align: center;
+    margin-top: 26px;
+  }
+
+  /* === 4. شاشة الاختبار (Quiz) === */
+
+  .bar {
+    height: 10px;
+    background: var(--panel);
+    border-radius: 9px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg,var(--purple),var(--neon));
+    transition: width .4s;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    color: var(--dim);
+    font-size: 13px;
+    margin: 8px 0 18px;
+  }
+
+  .q {
+    animation: in .35s both;
+  }
+
+  @keyframes in {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .q h2 {
+    font-size: clamp(21px,5.5vw,27px);
+    line-height: 1.4;
+    margin: 0 0 20px;
+  }
+
+  .opt {
+    display: block;
+    width: 100%;
+    text-align: right;
+    background: var(--panel);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: .15s;
+  }
+
+  .opt:hover, .opt.on {
+    border-color: var(--neon);
+    box-shadow: 0 0 14px rgba(57,255,106,.35);
+    transform: translateX(-4px);
+  }
+
+  .opt.on {
+    background: #13301f;
+  }
+
+  /* === 5. صفحة النتائج (Results) === */
+
+  .res {
+    text-align: center;
+  }
+
+  .ring {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 8px auto;
+  }
+
+  .ring svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+  }
+
+  .ring .n {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: Bungee,Impact,sans-serif;
+    font-size: 50px;
+    color: var(--neon);
+    text-shadow: 0 0 16px var(--neon);
+    direction: ltr;
+  }
+
+  .lvl {
+    font-family: Bungee,Impact,sans-serif;
+    font-size: clamp(24px,7vw,34px);
+    direction: ltr;
+    margin: 6px 0;
+  }
+
+  .roast {
+    font-size: 18px;
+    color: var(--text);
+    margin: 4px 0 18px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    text-align: right;
+  }
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: var(--neon);
+  }
+
+  .hb {
+    display: grid;
+    grid-template-columns: 96px 1fr 40px;
+    gap: 8px;
+    align-items: center;
+    margin: 7px 0;
+    font-size: 14px;
+  }
+
+  .hb .bar {
+    height: 8px;
+  }
+
+  .st {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+    text-align: center;
+  }
+
+  .st b {
+    display: block;
+    font-size: 24px;
+    color: var(--pink);
+  }
+
+  .st span {
+    font-size: 12px;
+    color: var(--dim);
+  }
+
+  /* === 6. صفحة الحقائق وعناصر مساعدة (Facts & Utilities) === */
+
+  .fact {
+    background: var(--panel);
+    border-right: 4px solid var(--purple);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom,0px));
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon);
+    color: #04200c;
+    padding: 10px 18px;
+    border-radius: 99px;
+    font-weight: 600;
+    z-index: 20;
+  }
+
+  /* احترام تفضيل تقليل الحركة */
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation: none!important;
+      transition: none!important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="logo">BRAIN ROT CALC</span>
+    <span>
+      <button class="nb" id="bFacts">😂 حقائق</button>
+      <button class="nb" id="bSnd" aria-label="الصوت">🔊</button>
+    </span>
+  </nav>
+  <main id="app"></main>
+  <p class="disc">⚠️ هذا الاختبار للترفيه والسخرية فقط، وليس تشخيصاً طبياً أو نفسياً. إذا كنت قلقاً بشأن استخدامك للهاتف أو نومك، تحدث مع مختص.</p>
+</div>
+<script>
+
+  /* ==========================================================
+     1. الإعدادات: الأسئلة والمستويات والحقائق (قابلة للتعديل)
+     ========================================================== */
+  /* ===== CONFIG: edit questions, levels and facts here ===== */
+  // كل سؤال: t=النص، c=التصنيف، o=الإجابات من الأخف إلى الأشد (النقاط تُحسب تلقائياً حسب الترتيب)
+  const CATS = { scr: 'وقت الشاشة', cmp: 'الإدمان على الهاتف', meme: 'الميمز', lang: 'لغة الإنترنت', sleep: 'النوم والروتين', att: 'التركيز' };
+  const Q = [
+      { c: 'scr', t: 'كم ساعة تقضي يومياً على TikTok أو Reels أو Shorts؟', o: ['أقل من نصف ساعة', 'حوالي ساعة', '2 – 3 ساعات', '4 – 6 ساعات', 'لا أعرف، الوقت توقف'] },
+      { c: 'cmp', t: 'هل تفتح هاتفك دون معرفة السبب؟', o: ['نادراً جداً', 'أحياناً', 'كثيراً', 'كل بضع دقائق', 'أفتحه وأغلقه وأفتحه'] },
+      { c: 'att', t: 'هل تشاهد فيديوهات قصيرة أثناء تناول الطعام؟', o: ['أبداً', 'في الوجبات الخفيفة فقط', 'معظم الوجبات', 'دائماً، الأكل بلا فيديو غريب', 'أحياناً أنسى أني آكل'] },
+      { c: 'att', t: 'هل تستطيع الجلوس 30 دقيقة دون تفقد هاتفك؟', o: ['بسهولة', 'نعم مع بعض الانزعاج', 'بصعوبة', 'تقريباً مستحيل', 'أتفقده حتى وأنا أستخدمه'] },
+      { c: 'meme', t: 'هل تستخدم الميمز للتواصل بدلاً من الكلمات؟', o: ['لا أبداً', 'نادراً', 'أحياناً', 'غالباً', 'لغتي الأم أصبحت الميمز'] },
+      { c: 'meme', t: 'هل تضحك على أشياء لا يفهمها الآخرون؟', o: ['لا، نفس ضحك الجميع', 'قليلاً', 'كثيراً', 'وأشرح لهم فلا يفهمون', 'أضحك وحدي في الغرفة'] },
+      { c: 'sleep', t: 'هل تشاهد فيديوهات قصيرة قبل النوم مباشرة؟', o: ['لا، أنام فوراً', 'أحياناً', 'أغلب الليالي', 'كل ليلة تقريباً', 'أنام والفيديو يعمل'] },
+      { c: 'scr', t: 'هل تنتقل من فيديو إلى آخر لساعات دون الشعور بالوقت؟', o: ['أبداً', 'مرة في الشهر', 'مرة في الأسبوع', 'أسبوعياً عدة مرات', 'وأنا أفعلها الآن'] },
+      { c: 'lang', t: 'هل تستخدم كلمات ومصطلحات الإنترنت في حياتك اليومية؟', o: ['لا', 'كلمة أو اثنتان', 'بعضها يفلت مني', 'بكثرة', 'لا أتذكر آخر جملة بلا مصطلحات'] },
+      { c: 'att', t: 'هل تشعر بالملل عند مشاهدة فيديو أطول من 5 دقائق؟', o: ['أبداً، أحب الأفلام', 'قليلاً', 'نعم غالباً', 'أسرّعه 2x', 'حتى الـ 60 ثانية أحياناً تطول'] },
+      { c: 'cmp', t: 'ماذا تفعل أول ما تستيقظ؟', o: ['أشرب ماءً أو أنظر للسقف', 'أفعل شيئاً ثم أتفقد الهاتف', 'أتفقد الهاتف مباشرة', 'أتصفح قبل أن أفتح عينيّ كاملتين', 'أنام وهو على وجهي'] },
+      { c: 'att', t: 'تشاهد فيلماً وفي يدك الهاتف. هل يحدث هذا؟', o: ['أبداً', 'نادراً', 'في المشاهد البطيئة', 'دائماً', 'أشاهد الفيلم على الهاتف نفسه'] },
+      { c: 'meme', t: 'كم ميماً ترسله لأصدقائك في اليوم؟', o: ['لا شيء', '1 – 3', '4 – 10', 'أكثر من 10', 'أرسل ميمز لنفسي'] },
+      { c: 'lang', t: 'هل قلت كلمة من الإنترنت بصوت عالٍ في موقف جدّي؟', o: ['لا', 'تماسكت بصعوبة', 'مرة', 'أكثر من مرة', 'والجميع صمت'] },
+      { c: 'cmp', t: 'ماذا يحدث عندما تنخفض بطارية الهاتف عن 10%؟', o: ['لا شيء', 'أنتبه فقط', 'أبحث عن الشاحن', 'ينتابني قلق حقيقي', 'أترك كل شيء وأنقذه فوراً'] },
+      { c: 'scr', t: 'هل تفتح تطبيقاً آخر فور إغلاقك لتطبيق ثانٍ؟', o: ['لا', 'أحياناً', 'غالباً', 'دائماً', 'أدور بين أربعة تطبيقات بلا توقف'] },
+      { c: 'att', t: 'هل نسيت شيئاً مهماً لأنك كنت تتصفح؟', o: ['لا', 'مرة', 'أحياناً', 'كثيراً', 'نسيت لماذا فتحت الهاتف أصلاً'] },
+      { c: 'lang', t: 'كم ترجمة حرفية لنكتة إنترنت تحاول شرحها للأهل؟', o: ['لا أحاول', 'محاولة واحدة', 'بضع محاولات', 'أصبحوا يتجنبونني', 'ولم ينجح شيء قط'] },
+      { c: 'meme', t: 'هل تتذكر ميماً عمره سنوات بتفاصيله لكن لا تتذكر موعداً مهماً؟', o: ['لا', 'أحياناً', 'غالباً', 'نعم والموعد كان أمس', 'أحفظ الميمز أكثر من أسماء أقاربي'] },
+      { c: 'sleep', t: 'كم ساعة تنامها عادةً بسبب التصفح الليلي؟', o: ['7 ساعات أو أكثر', '6 ساعات', '5 ساعات', '4 ساعات', 'أنام عند الفجر وأستيقظ عند الظهر'] }
+  ];
+  const LV = [
+      { max: 10, n: 'Brain Healthy', e: '🧠', col: '#39ff6a', d: 'عقلك لا يزال سليماً، أنت كائن نادر!', r: 'تقرأ وتركز وتنام. هل أنت متأكد أنك على الإنترنت؟' },
+      { max: 25, n: 'Slightly Cooked', e: '🍳', col: '#b6ff39', d: 'بدأت تفقد بعض خلايا الدماغ، لكن هناك أمل.', r: 'عقلك على نار هادئة. ما زال بإمكانك إنقاذه قبل أن يحترق.' },
+      { max: 45, n: 'Mild Brain Rot', e: '🥴', col: '#ffd23d', d: 'الميمز بدأت تسيطر على حياتك.', r: 'صرت تفكر بالميمز قبل أن تفكر بالكلمات. الوضع تحت السيطرة، لكن بالكاد.' },
+      { max: 65, n: 'Certified Brain Rot', e: '💀', col: '#ff8a3d', d: 'أصبحت تتحدث بلغة الإنترنت.', r: 'معك شهادة معتمدة. أصدقاؤك يترجمون كلامك لأهلك.' },
+      { max: 85, n: 'Brain Damage Territory', e: '☠️', col: '#ff3d6e', d: 'عقلك يعيش داخل TikTok.', r: 'عقلك لم يعد يعمل بل يمرّر الشاشة. الإشعار القادم قد يكون آخر ما تتذكره.' },
+      { max: 100, n: 'Beyond Recovery', e: '💀', col: '#ff3df0', d: 'حتى الإنترنت لم يعد يفهم ما يحدث داخل رأسك!', r: 'لا علاج، لا نسخة احتياطية. لكن على الأقل تعرف أنك مميز.' }
+  ];
+  const HABIT = { scr: 'ساعات التمرير الطويلة تسرق أيامك.', cmp: 'يدك تفتح الهاتف قبل أن يقرر عقلك.', meme: 'تفكر وتتواصل وتحلم بالميمز.', lang: 'قاموسك مليء بكلمات لا تُوجد في أي قاموس.', sleep: 'نومك يدفع ثمن كل فيديو إضافي.', att: 'تركيزك أقصر من فيديو قصير.' };
+  const FACTS = ['عمر انتباه سمكة ذهبية أطول من عمر بعض الفيديوهات، ومع ذلك تتجاوزها بعد ثانيتين.', 'التمرير اللانهائي مصمم ليشبه ماكينة الحظ: في كل سحبة قد يظهر شيء ممتع.', 'كلمة Brain Rot اختارتها قواميس أكسفورد ككلمة العام 2024، فأنت جزء من التاريخ.', 'متوسط الوقت بين فتح الهاتف وسؤال لماذا فتحته: ثلاث ثوانٍ تقريباً (رقم ساخر، ليس إحصائية علمية).', 'أخطر عبارة في الإنترنت: فيديو واحد فقط ثم أنام.', 'لو كان كل ميم تحفظه آية، لحفظت كتاباً كاملاً.', 'الهاتف الوحيد الذي لا يحتاج شاحناً هو الذي لا تلمسه.'];
+  /* ===== END CONFIG ===== */
+
+  /* ==========================================================
+     2. الأدوات الأساسية والتخزين المحلي (Core & Storage)
+     ========================================================== */
+  const $ = s => document.querySelector(s), app = $('#app');
+  const KEY = 'brc_v1';
+  const lsGet = (k, d) => { try {
+      const v = localStorage.getItem(k);
+      return v ? JSON.parse(v) : d;
+  }
+  catch (e) {
+      return d;
+  } };
+  const lsSet = (k, v) => { try {
+      localStorage.setItem(k, JSON.stringify(v));
+  }
+  catch (e) { } };
+  let S = lsGet(KEY, { sound: true, tests: 0, last: null, daily: {} });
+  let run = lsGet(KEY + '_run', null);
+  const save = () => lsSet(KEY, S), saveRun = () => lsSet(KEY + '_run', run);
+
+  /* ==========================================================
+     3. الصوت (Sound)
+     ========================================================== */
+  /* sound */
+  let AC;
+  function beep(f = 520, d = .08) { if (!S.sound)
+      return; try {
+      AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+      const o = AC.createOscillator(), g = AC.createGain();
+      o.type = 'square';
+      o.frequency.value = f;
+      g.gain.value = .04;
+      o.connect(g);
+      g.connect(AC.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(.0001, AC.currentTime + d);
+      o.stop(AC.currentTime + d);
+  }
+  catch (e) { } }
+  function sndBtn() { $('#bSnd').textContent = S.sound ? '🔊' : '🔇'; }
+  $('#bSnd').onclick = () => { S.sound = !S.sound; save(); sndBtn(); beep(700); };
+  $('#bFacts').onclick = () => { beep(); facts(); };
+  sndBtn();
+
+  /* ==========================================================
+     4. دوال مساعدة (Helpers)
+     ========================================================== */
+  /* helpers */
+  const todayKey = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+  function rng(seed) { let h = 2166136261; for (const ch of String(seed)) {
+      h ^= ch.charCodeAt(0);
+      h = Math.imul(h, 16777619);
+  } return () => { h += 0x6D2B79F5; let t = h; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function shuffle(a, r = Math.random) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(r() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  } return a; }
+  function toast(m) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2000); }
+  const friend = () => { const m = location.hash.match(/^#vs-(\d{1,3})$/); return m ? Math.min(100, +m[1]) : null; };
+  const lvOf = p => LV.find(l => p <= l.max);
+
+  /* ==========================================================
+     5. الشاشات: الرئيسية، الاختبار، النتائج، الحقائق (Views)
+     ========================================================== */
+  /* views */
+  function home() {
+      const f = friend(), dd = S.daily[todayKey()];
+      app.innerHTML = `<section class="hero">
+      ${f !== null ? `<div class="banner">صديقك حصل على <b>${f}%</b> — هل تستطيع التفوق عليه؟ 😈</div>` : ''}
+      <div class="brain" data-t="🧠">🧠</div>
+      <h1>HOW <em>BRAIN ROTTEN</em> ARE YOU?</h1>
+      <p class="sub">20 سؤالاً صادقاً عن هاتفك وميمزك وعاداتك. النتيجة مضحكة، والاعتراف أول خطوات التعافي.</p>
+      <button class="cta" id="go">START THE TEST</button>
+      <div class="row">
+        ${run ? `<button class="sec" id="resume">متابعة من السؤال ${run.i + 1}</button>` : ''}
+        <button class="sec" id="daily">${dd !== undefined ? 'تحدي اليوم ✅ ' + dd + '%' : '🔥 تحدي اليوم'}</button>
+        <button class="sec" id="rand">🎲 أسئلة عشوائية</button>
+        ${S.last !== null ? `<button class="sec" id="last">آخر نتيجة: ${S.last}%</button>` : ''}
+      </div>
+      <div class="count">أجريت ${S.tests} اختبار على هذا الجهاز (عدّاد محلي فقط، بلا أرقام وهمية)</div>
+    </section>`;
+      $('#go').onclick = () => start('full');
+      $('#rand').onclick = () => start('random');
+      $('#daily').onclick = () => start('daily');
+      if (run)
+          $('#resume').onclick = () => { beep(); quiz(); };
+      if (S.last !== null)
+          $('#last').onclick = () => result(S.lastData || { p: S.last, ans: {}, order: [...Q.keys()] });
+  }
+  function start(mode) {
+      beep(660);
+      const all = [...Q.keys()];
+      let order = all;
+      if (mode === 'random')
+          order = shuffle(all);
+      if (mode === 'daily')
+          order = shuffle(all, rng(todayKey())).slice(0, 10);
+      run = { mode, order, i: 0, ans: {} };
+      saveRun();
+      quiz();
+  }
+  function quiz() {
+      const idx = run.order[run.i], q = Q[idx], n = run.order.length, cur = run.ans[idx];
+      app.innerHTML = `<div class="bar"><i style="width:${run.i / n * 100}%"></i></div>
+    <div class="meta"><span>السؤال ${run.i + 1} من ${n}${run.mode === 'daily' ? ' · تحدي اليوم' : ''}</span><span>${CATS[q.c]}</span></div>
+    <div class="q"><h2>${q.t}</h2>${q.o.map((o, k) => `<button class="opt${cur === k ? ' on' : ''}" data-k="${k}">${o}</button>`).join('')}</div>
+    <div class="row" style="justify-content:space-between"><button class="nb" id="back" ${run.i === 0 ? 'disabled style="opacity:.4"' : ''}>← السابق</button><button class="nb" id="quit">خروج</button></div>`;
+      requestAnimationFrame(() => { const b = $('.bar i'); if (b)
+          b.style.width = (run.i + (cur !== undefined ? 1 : 0)) / n * 100 + '%'; });
+      document.querySelectorAll('.opt').forEach(b => b.onclick = () => {
+          run.ans[idx] = +b.dataset.k;
+          beep(400 + run.ans[idx] * 120);
+          b.classList.add('on');
+          setTimeout(() => { run.i++; saveRun(); run.i >= n ? finish() : quiz(); }, 220);
+          saveRun();
+      });
+      $('#back').onclick = () => { if (run.i > 0) {
+          beep(300);
+          run.i--;
+          saveRun();
+          quiz();
+      } };
+      $('#quit').onclick = () => { saveRun(); home(); };
+  }
+  function calc(order, ans) {
+      let sum = 0, cat = {};
+      order.forEach(i => { const m = Q[i].o.length - 1, v = (ans[i] ?? 0) / m; sum += v; (cat[Q[i].c] = cat[Q[i].c] || []).push(v); });
+      const raw = sum / order.length;
+      // منحنى متوازن: الإجابات المتوسطة تعطي نتيجة معتدلة، و100% يتطلب أشد إجابة في كل سؤال
+      const p = Math.round(100 * Math.pow(raw, 1.25));
+      return { p, cat, raw };
+  }
+  function finish() {
+      const { p } = calc(run.order, run.ans);
+      const data = { p, ans: run.ans, order: run.order, mode: run.mode };
+      S.tests++;
+      S.last = p;
+      S.lastData = data;
+      if (run.mode === 'daily')
+          S.daily[todayKey()] = p;
+      save();
+      run = null;
+      lsSet(KEY + '_run', null);
+      result(data, true);
+  }
+  function result(d, anim) {
+      const { p, cat } = calc(d.order, d.ans), lv = lvOf(p), f = friend();
+      const cats = Object.entries(cat).map(([k, a]) => [k, Math.round(a.reduce((x, y) => x + y, 0) / a.length * 100)]).sort((a, b) => b[1] - a[1]);
+      let hi = 0, lo = 0;
+      d.order.forEach(i => { const a = d.ans[i] ?? 0, m = Q[i].o.length - 1; if (a === m)
+          hi++; if (a === 0)
+          lo++; });
+      const top = cats.filter(c => c[1] >= 40).slice(0, 3);
+      const R = 90, C = 2 * Math.PI * R;
+      app.innerHTML = `<section class="res">
+      <div class="ring"><svg viewBox="0 0 220 220"><circle cx="110" cy="110" r="${R}" fill="none" stroke="#25103f" stroke-width="16"/><circle id="arc" cx="110" cy="110" r="${R}" fill="none" stroke="${lv.col}" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="filter:drop-shadow(0 0 8px ${lv.col});transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/></svg><div class="n" id="num">0%</div></div>
+      <div class="lvl" style="color:${lv.col}">${lv.n} ${lv.e}</div>
+      <div class="roast"><b>${lv.d}</b><br>${lv.r}</div>
+      ${f !== null ? `<div class="banner">${p > f ? `تفوقت على صديقك (${f}%) بفارق ${p - f} نقطة تعفن 😈` : p < f ? `صديقك (${f}%) أكثر تعفناً منك بـ ${f - p} نقطة 🏆` : `تعادل مع صديقك (${f}%)! توأم دماغي 🤝`}</div>` : ''}
+      <div class="card"><h3>العادات التي رفعت نتيجتك</h3>
+        ${top.length ? top.map(([k, v]) => `<div style="margin:6px 0">• <b>${CATS[k]}</b>: ${HABIT[k]}</div>`).join('') : '<div>لا توجد عادة تتجاوز الحد. أنت تقريباً شخص طبيعي، مبروك (أو للأسف).</div>'}
+        ${cats.map(([k, v]) => `<div class="hb"><span>${CATS[k]}</span><div class="bar"><i style="width:${v}%"></i></div><span>${v}%</span></div>`).join('')}
+      </div>
+      <div class="card"><h3>إحصائيات مصغرة</h3><div class="st"><div><b>${d.order.length}</b><span>سؤالاً أجبت</span></div><div><b>${hi}</b><span>إجابة بأقصى درجة تعفن</span></div><div><b>${lo}</b><span>إجابة سليمة تماماً</span></div></div></div>
+      <div class="row">
+        <button class="cta" id="share" style="font-size:15px;padding:12px 18px">📤 شارك كصورة</button>
+        <button class="sec" id="copy">📋 نسخ كنص</button>
+        <button class="sec" id="chal">⚔️ تحدَّ صديقاً</button>
+        <button class="sec" id="again">🔄 إعادة الاختبار</button>
+      </div>
+      <p class="count">للمشاركة على Instagram أو TikTok أو Facebook: احفظ الصورة ثم انشرها من التطبيق.</p>
+    </section>`;
+      const set = v => { $('#arc').style.strokeDashoffset = C * (1 - v / 100); $('#num').textContent = Math.round(v) + '%'; };
+      if (anim && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+          requestAnimationFrame(() => requestAnimationFrame(() => $('#arc').style.strokeDashoffset = C * (1 - p / 100)));
+          const t0 = performance.now();
+          (function tick(t) { const k = Math.min(1, (t - t0) / 1600); $('#num').textContent = Math.round(p * (1 - Math.pow(1 - k, 3))) + '%'; if (k < 1)
+              requestAnimationFrame(tick); })(t0);
+          beep(880, .2);
+      }
+      else
+          set(p);
+      const link = () => location.href.split('#')[0] + '#vs-' + p;
+      const text = () => `🧠 حصلت على ${p}% في BRAIN ROT CALCULATOR!\nالمستوى: ${lv.n} ${lv.e}\n"${lv.d}"\nهل تستطيع التفوق عليّ؟ ${link()}`;
+      const cp = async (t, m) => { try {
+          await navigator.clipboard.writeText(t);
+          toast(m);
+      }
+      catch (e) {
+          prompt('انسخ النص:', t);
+      } };
+      $('#copy').onclick = () => { beep(); cp(text(), 'تم النسخ ✅'); };
+      $('#chal').onclick = () => { beep(); cp(link(), 'تم نسخ رابط التحدي ✅'); };
+      $('#again').onclick = () => { beep(); home(); };
+      $('#share').onclick = () => shareImg(p, lv, text());
+  }
+  async function shareImg(p, lv, txt) {
+      beep();
+      const c = document.createElement('canvas');
+      c.width = 1080;
+      c.height = 1350;
+      const x = c.getContext('2d');
+      const g = x.createLinearGradient(0, 0, 1080, 1350);
+      g.addColorStop(0, '#08040f');
+      g.addColorStop(1, '#2a0d55');
+      x.fillStyle = g;
+      x.fillRect(0, 0, 1080, 1350);
+      x.textAlign = 'center';
+      x.fillStyle = '#39ff6a';
+      x.font = 'bold 54px Bungee,Impact,sans-serif';
+      x.fillText('BRAIN ROT CALCULATOR', 540, 130);
+      x.font = '160px serif';
+      x.fillText('🧠', 540, 330);
+      x.lineWidth = 34;
+      x.lineCap = 'round';
+      x.strokeStyle = '#25103f';
+      x.beginPath();
+      x.arc(540, 650, 210, 0, 7);
+      x.stroke();
+      x.strokeStyle = lv.col;
+      x.shadowColor = lv.col;
+      x.shadowBlur = 30;
+      x.beginPath();
+      x.arc(540, 650, 210, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * p / 100);
+      x.stroke();
+      x.shadowBlur = 0;
+      x.fillStyle = lv.col;
+      x.font = 'bold 150px Bungee,Impact,sans-serif';
+      x.fillText(p + '%', 540, 700);
+      x.fillStyle = '#fff';
+      x.font = 'bold 70px Bungee,Impact,sans-serif';
+      x.fillText(lv.n + ' ' + lv.e, 540, 1000);
+      x.fillStyle = '#d9c8ff';
+      x.font = '42px Rubik,Tahoma,sans-serif';
+      x.direction = 'rtl';
+      x.fillText(lv.d, 540, 1090, 980);
+      x.fillStyle = '#ff3df0';
+      x.font = '38px Rubik,Tahoma,sans-serif';
+      x.fillText('هل تستطيع التفوق عليّ؟ جرّب الاختبار', 540, 1220);
+      x.fillStyle = '#a898c8';
+      x.font = '26px Rubik,Tahoma,sans-serif';
+      x.fillText('للترفيه فقط وليس تشخيصاً طبياً', 540, 1290);
+      c.toBlob(async (b) => {
+          if (!b)
+              return toast('تعذر إنشاء الصورة');
+          const file = new File([b], 'brain-rot.png', { type: 'image/png' });
+          try {
+              if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                  await navigator.share({ files: [file], text: txt });
+                  return;
+              }
+          }
+          catch (e) {
+              if (e.name === 'AbortError')
+                  return;
+          }
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(b);
+          a.download = 'brain-rot.png';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          toast('تم حفظ الصورة 📥');
+      });
+  }
+  function facts() {
+      app.innerHTML = `<h1 style="font-size:28px">FUN FACTS</h1><p class="sub" style="margin-top:0">حقائق ساخرة (للضحك لا للمراجع العلمية)</p>${FACTS.map(f => `<div class="fact">${f}</div>`).join('')}<div class="row"><button class="cta" id="h" style="font-size:15px">← BACK</button></div>`;
+      $('#h').onclick = () => { beep(); home(); };
+  }
+
+  /* ==========================================================
+     6. التشغيل (Init)
+     ========================================================== */
+  addEventListener('hashchange', () => { if (!run)
+      home(); });
+  home();
+</script>
+</body>
+</html>
